@@ -1,0 +1,221 @@
+﻿@using iakademi43_proje.Models
+@model tbl_Users
+
+
+@{
+    ViewBag.Title = "order";
+    Layout = "~/Views/Shared/default_layout.cshtml";
+}
+
+<!-- wishlist area start  -->
+<div class="wishlist-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+
+                <div class="row">
+                    <div class="col-lg-2 col-md-6 col-sm-6"></div>
+                    <div class="col-lg-8 col-md-6 col-sm-6 ">
+                        <div class="cart_totals">
+                            <h2>TESLİMAT BİLGİLERİNİZ</h2>
+                            <div class="total_table">
+                                <table class="table-responsive">
+                                    <tbody>
+                                        <tr class="cart-subtotal">
+                                            <th>Email</th>
+                                            <td><span class="amount">@Model.Email</span></td>
+                                        </tr>
+                                        <tr class="shipping">
+                                            <th>Ad Soyad</th>
+                                            <td>@Model.NameSurname</td>
+                                        </tr>
+                                        <tr class="order-total">
+                                            <th>Telefon</th>
+                                            <td><strong><span class="amount">@Model.Telephone</span></strong> </td>
+                                        </tr>
+                                        <tr class="order-total">
+                                            <th>Fatura Adresi</th>
+                                            <td><strong><span class="amount">@Model.InvoicesAddres</span></strong> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <br /><br />
+                <hr style="background-color:red;font-size:10px;" />
+
+
+                <form action="@Url.Action("order","Home")" method="post">
+
+                    <div class="row">
+                        <div class="col-lg-2 col-md-6 col-sm-6"></div>
+                        <div class="col-lg-8 col-md-6 col-sm-6 ">
+                            <div class="cart_totals">
+                                <h2>KREDİ KART BİLGİLERİNİZİ GİRİNİZ</h2>
+                                <div class="total_table">
+                                    <table class="table-responsive">
+                                        <tbody>
+
+                                            <tr class="cart-subtotal">
+                                                <th>Kredi Kart No</th>
+                                                <td>
+                                                    <span class="amount">
+                                                        <input type="text" name="creditCartNo" value="" maxlength="16" required onkeypress="return numberonly(this, event);" />
+                                                    </span>
+                                                </td>
+                                            </tr>
+
+                                            <tr class="shipping">
+                                                <th>Ay</th>
+                                                <td>
+                                                    <input type="text" name="creditCartAy" value="" maxlength="2" required onkeypress="return numberonly(this, event);" />
+                                                </td>
+                                            </tr>
+
+                                            <tr class="shipping">
+                                                <th>Yıl</th>
+                                                <td>
+                                                    <input type="text" name="creditCartYil" value="" maxlength="2" required onkeypress="return numberonly(this, event);" />
+                                                </td>
+                                            </tr>
+
+                                            <tr class="shipping">
+                                                <th>CVS</th>
+                                                <td>
+                                                    <input type="text" name="creditCartCVS" value="" maxlength="3" required onkeypress="return numberonly(this, event);" />
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br /><br />
+                    <hr style="background-color:red;font-size:10px;" />
+
+
+                    <div class="row">
+                        <div class="col-lg-2 col-md-6 col-sm-6"></div>
+                        <div class="col-lg-8 col-md-6 col-sm-6 ">
+                            <div class="cart_totals">
+                                <h2>FATURA BİLGİLERİNİZİ GİRİNİZ</h2>
+                                <div class="total_table">
+                                    <table class="table-responsive">
+                                        <tbody>
+
+                                            <tr class="cart-subtotal">
+                                                <th>Fatura Tipi</th>
+                                                <td>
+                                                    <span class="amount">
+                                                        @Html.RadioButton("faturatipi", "rbBireysel", new { value = "rbBireysel", @checked = true }) Bireysel
+
+                                                        @Html.RadioButton("faturatipi", "rbKurumsal", new { value = "rbKurumsal" }) Kurumsal
+                                                    </span>
+                                                </td>
+                                            </tr>
+
+                                            @* bireysel radiobuton seçilirse,bu tr görünecek , tr_vergino gizlenecek*@
+                                            <tr class="shipping" id="tr_tckimlikno">
+                                                <th>TC Kimlik No</th>
+                                                <td>
+                                                    <input type="text" id="txt_tckimlikno" name="txt_tckimlikno" value="" maxlength="11" required onkeypress="return numberonly(this, event);" />
+                                                </td>
+                                            </tr>
+
+                                            @* kurumsal radiobuton seçilirse,bu tr görünecek , tr_tckimlikno gizlenecek*@
+                                            <tr class="shipping" id="tr_vergino" style="display:none;background-color:lightblue">
+                                                <th>Vergi No</th>
+                                                <td>
+                                                    <input type="text" id="txt_vergino" name="txt_vergino" value="" maxlength="10"  onkeypress="return numberonly(this, event);" />
+                                                </td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br /><br />
+                    <hr style="background-color:red;font-size:10px;" />
+
+                    <div class="row">
+                        <div class="col-lg-2 col-md-6 col-sm-6"></div>
+                        <div class="col-lg-8 col-md-6 col-sm-6 ">
+                            <div class="cart_totals">
+                                <h2>SATIŞ SÖZLEŞMESİ</h2>
+                                <div class="total_table">
+                                    <p>Satın alınan ürün 2 gün içinde iade edilebilir.Kırılan ürünlerden şirketimiz sorumlu değildir.</p>
+
+                                    <div id="div_chk_kabulediyorum">
+                                        <strong><label>@Html.CheckBox("chk_kabulediyorum",false)
+                                            Yukarıdaki bilgilendirmeleri okudum,kabul ediyorum.
+                                            </label></strong>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6 col-sm-6"></div>
+                        <div class="col-lg-4 col-md-6 col-sm-6 ">
+                            <div class="submit_crt" id="div_odemeyap" style="display:none;">
+                                <a href="@Url.Action("order","Home")" title="ÖDEME YAP">
+                                    <input type="submit" class="update_cart" value="ÖDEME YAP" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- wishlist area end  -->
+<script>
+    $('input[type=radio][name=faturatipi]').on('change', function () {
+        if ($(this).val() == "rbBireysel") {
+            $("#tr_tckimlikno").css("display", "block")
+            $("#tr_vergino").css("display", "none")
+            $("#txt_tckimlikno").attr("required", "true")
+            $("#txt_vergino").removeAttr("required")
+        }
+        else {
+            $("#tr_tckimlikno").css("display", "none")
+            $("#tr_vergino").css("display", "block")
+            $("#txt_vergino").attr("required", "true")
+            $("#txt_tckimlikno").removeAttr("required")
+        }
+    })
+
+
+    $("[type='checkbox'][name=chk_kabulediyorum]").change(function () {
+    //   alert("bbbb")
+        if ($("#chk_kabulediyorum").prop("checked")) {
+          //  alert("görünsün")
+            $("#div_odemeyap").css("display","block")
+        }
+        else {
+           // alert("görünmesin")
+            $("#div_odemeyap").css("display", "none")
+        }
+    })
+</script>

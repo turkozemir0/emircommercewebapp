@@ -1,0 +1,4 @@
+D:\iakademi43_proje (1)\iakademi43_proje\iakademi43_proje\obj\Debug\iakademi43_proje.csproj.AssemblyReference.cache
+D:\iakademi43_proje (1)\iakademi43_proje\iakademi43_proje\obj\Debug\iakademi43_proje.csproj.CoreCompileInputs.cache
+D:\iakademi43_proje (1)\iakademi43_proje\iakademi43_proje\obj\Debug\iakademi43_proje.dll
+D:\iakademi43_proje (1)\iakademi43_proje\iakademi43_proje\obj\Debug\iakademi43_proje.pdb

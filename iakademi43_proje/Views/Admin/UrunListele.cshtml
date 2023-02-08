@@ -1,0 +1,90 @@
+﻿@using iakademi43_proje.Models
+@model List<vw_urunler>
+
+@{
+    ViewBag.Title = "UrunListele";
+    Layout = "~/Views/Shared/admin_layout.cshtml";
+}
+
+<label style="background-color:blue;color:white;">GÜN = 1</label>
+<label style="background-color:red;color:white;">SLİDER = 2</label>
+<label style="background-color:green;color:white;">ÖZEL = 3</label>
+<label style="background-color: #AF7AB3; color: white; ">FIRSAT = 4</label>
+<label style="background-color: #94B49F; color: white;">YILDIZ = 5</label>
+
+<table border="1" class="table table-dark table-bordered table-hover" style="margin-top:50px;">
+
+    <tr style="background-color:gray;color:white;">
+        <th>ID</th>
+        <th colspan="2">ÜRÜN ADI</th>
+        <th>FİYAT</th>
+        <th>KATEGORİ</th>
+        <th>MARKA</th>
+        <th>STOK</th>
+        <th>İNDİRİM</th>
+        <th>KDV</th>
+        <th>DURUM</th>
+        <th></th>
+        <th></th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td><img src="~/Content/resimler/@item.PhotoPath" alt="Alternate Text" style="width:60px;height:60px;" /></td>
+            <td>@item.Price</td>
+            <td>@item.CategoryName</td>
+            <td>@item.BrandName</td>
+            <td>@item.Stok</td>
+            <td>@item.Discount</td>
+            <td>@item.Kdv</td>
+
+
+            <td>
+                @if (item.statusID == 1)
+                {
+                    <label style="background-color:blue;color:white;">GÜN</label>
+                }
+                else if (item.statusID == 2)
+                {
+                    <label style="background-color:red;color:white;">SLİDER</label>
+                }
+                else if (item.statusID == 3)
+                {
+                    <label style="background-color:green;color:white;">ÖZEL</label>
+                }
+                else if (item.statusID == 4)
+                {
+                    <label style="background-color: #AF7AB3; color: white;">FIRSAT</label>
+                }
+                else if (item.statusID == 5)
+                {
+                    <label style="background-color: #94B49F; color: white;">YILDIZ</label>
+                }
+                else
+                {
+                    <label style="background-color: white; color: white;"></label>
+                }
+            </td>
+
+            <td> <strong>
+        @if (item.Active == true)
+        {
+            <label>Aktif</label>
+        }
+        else
+        {
+            <label>Pasif</label>
+        }
+</strong></td>
+
+
+            <td><a href="/Admin/UrunGuncelle/@item.ProductID" class="btn btn-primary">GÜNCELLE</a></td>
+            <td><a href="/Admin/urunSil/@item.ProductID" class="btn btn-danger" onclick="return confirm('Kayıt Silinsin mi?')">SİL</a></td>
+        </tr>
+    }
+
+</table>
+

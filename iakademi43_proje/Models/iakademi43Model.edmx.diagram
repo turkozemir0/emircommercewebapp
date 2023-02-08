@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="511420d76b8a480a90347a13e9025350" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.tbl_Categories" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.tbl_Messages" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.tbl_Orders" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.tbl_Suppliers" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.tbl_Users" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.tbl_Status" Width="1.5" PointX="5.375" PointY="6.75" />
+        <AssociationConnector Association="iakademi43DB_ProjeModel.FK_tbl_Orders_tbl_Users" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.tbl_Products" Width="1.5" PointX="9.625" PointY="2" />
+        <AssociationConnector Association="iakademi43DB_ProjeModel.FK_tbl_Products_tbl_Categories" />
+        <AssociationConnector Association="iakademi43DB_ProjeModel.FK_tbl_Orders_tbl_Products" />
+        <AssociationConnector Association="iakademi43DB_ProjeModel.FK_tbl_Products_tbl_Status" />
+        <AssociationConnector Association="iakademi43DB_ProjeModel.FK_tbl_Products_tbl_Suppliers" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.sysdiagrams" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.tbl_Settings" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.vw_urunler" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.vw_siparislerim" Width="1.5" PointX="9.375" PointY="8.75" />
+        <EntityTypeShape EntityType="iakademi43DB_ProjeModel.vw_arama" Width="1.5" PointX="5.375" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
